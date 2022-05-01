@@ -3,7 +3,7 @@ import * as validator from 'validator';
 import * as bcrypt from 'bcrypt';
 
 export const UserSchema = new mongoose.Schema ({
-    fullName: {
+    fullname: {
         type: String,
         minlength: 6,
         maxlength: 255,

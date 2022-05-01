@@ -46,7 +46,7 @@ export class UserService {
         const user = await this.findByVerification(verifyUuidDto.verification);
         await this.setUserAsVerified(user);
         return {
-            fullName: user.fullName,
+            fullname: user.fullname,
             email: user.email,
             accessToken: await this.authService.createAccessToken(user._id),
             refreshToken: await this.authService.createRefreshToken(req, user._id),
@@ -62,7 +62,7 @@ export class UserService {
         await this.checkPassword(loginUserDto.password, user);
         await this.passwordsAreMatch(user);
         return {
-            fullName: user.fullName,
+            fullname: user.fullname,
             email: user.email,
             accessToken: await this.authService.createAccessToken(user._id),
             refreshToken: await this.authService.createRefreshToken(req, user._id),
@@ -146,7 +146,7 @@ export class UserService {
 
     private buildRegistrationInfo(user): any {
         const userRegistrationInfo = {
-            fullName: user.fullName,
+            fullname: user.fullname,
             email: user.email,
             verified: user.verified,
         };

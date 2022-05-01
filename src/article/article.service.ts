@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-
 import { Article } from './interfaces/article.interface';
 import { CreateArticleDto } from './dto/create-article.dto';
 
@@ -39,7 +38,8 @@ export class ArticleService {
     // │ │├─┘ ││├─┤ │ ├┤   ├─┤├┬┘ │ ││  │  ├┤     ├─┤│  │    ├─┘├─┤├┬┘├─┤│││└─┐  
     // └─┘┴  ─┴┘┴ ┴ ┴ └─┘  ┴ ┴┴└─ ┴ ┴└─┘┴─┘└─┘    ┴ ┴┴─┘┴─┘  ┴  ┴ ┴┴└─┴ ┴┴ ┴└─┘  \
     async updateArticlePut(id: string, createArticleDto: CreateArticleDto): Promise<Article> {
-        return await this.articleModel.updateOne({_id: id}, createArticleDto);
+        //await this.articleModel.updateOne({_id: id}, createArticleDto);
+        return await this.articleModel.findByIdAndUpdate(id, createArticleDto, { new: true });
     }
 
     // ┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐  ┌─┐┌┐┌┌─┐  ┌─┐┬─┐┌┬┐┬┌─┐┬  ┌─┐
